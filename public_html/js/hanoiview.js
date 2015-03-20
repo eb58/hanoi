@@ -1,3 +1,5 @@
+/* global Raphael */
+
 var hanoiview = function (h) { // h = number of bricks
    var wBrick = 250;
    var hBrick = 30;

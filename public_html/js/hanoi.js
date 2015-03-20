@@ -1,3 +1,5 @@
+/* global _ */
+
 var hanoi = function (n) {
    var m = {l: _.range(1, n + 1).reverse(), c: [], r: []}; // -> { l:[n...,3,2,1], c:[], r:[] }
    var cnt = 1;
