@@ -26,7 +26,7 @@ var hanoiview = function (h) { // h = number of bricks
    }
 
    function drawModel(m) {
-      console.log( m.l,m.c, m.r);
+      console.log(m.l, m.c, m.r);
       drawTower(0, m.l);
       drawTower(1, m.c);
       drawTower(2, m.r);
