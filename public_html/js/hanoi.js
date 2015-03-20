@@ -6,10 +6,12 @@ var hanoi = function (n) {
       if (n === 0) return;
       h(n - 1, {l: m.l, c: m.r, r: m.c});
       m.r.push(m.l.pop());
-      var cgm = $.extend(true, {}, gm);
       setTimeout(function () {
-         v.drawModel(cgm);
-      }, 1000 * cnt++);//
+         var cgm = $.extend(true, {}, gm);
+         return function () {
+            v.drawModel(cgm);
+         };
+      }(), 1000 * cnt++);//
       h(n - 1, {l: m.c, c: m.l, r: m.r});
    }
    v.drawModel(gm);
