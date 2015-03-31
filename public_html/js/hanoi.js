@@ -6,16 +6,18 @@ var hanoi = function (n) {
    var v = hanoiview(n);
    v.drawModel(m);
 
-   (function hanoi(n, l, c, r) {
+   function draw() {
+      var cm = $.extend(true, {}, m);
+      return function () {
+         v.drawModel(cm);
+      };
+   }
+
+   (function h(n, l, c, r) {
       if (n === 0) return;
-      hanoi(n - 1, l, r, c);
+      h(n - 1, l, r, c);
       r.push(l.pop());
-      setTimeout(function () {
-         var cm = $.extend(true, {}, m);
-         return function () {
-            v.drawModel(cm);
-         };
-      }(), 1000 * cnt++);//
-      hanoi(n - 1, c, l, r);
+      setTimeout(draw(), 1000 * cnt++);
+      h(n - 1, c, l, r);
    })(n, m.l, m.c, m.r);
 };
