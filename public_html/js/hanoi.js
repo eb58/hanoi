@@ -1,23 +1,16 @@
 /* global _ */
 
-var hanoi = function (n) {
-   var m = {l: _.range(1, n + 1).reverse(), c: [], r: []}; // -> { l:[n...,3,2,1], c:[], r:[] }
-   var cnt = 1;
-   var v = hanoiview(n);
-   v.drawModel(m);
+const hanoi = (n) => {
+   const model = {l: _.range(1, n + 1).reverse(), c: [], r: []}; // -> { l:[n...,3,2,1], c:[], r:[] }
+   const result = [$.extend(true, {}, model)];
 
-   function draw() {
-      var cm = $.extend(true, {}, m);
-      return function () {
-         v.drawModel(cm);
-      };
-   }
-
-   (function h(n, l, c, r) {
-      if (n === 0) return;
-      h(n - 1, l, r, c);
-      r.push(l.pop());
-      setTimeout(draw(), 1000 * cnt++);
-      h(n - 1, c, l, r);
-   })(n, m.l, m.c, m.r);
+   ((n, m) => {
+      if (n > 0) {
+         h(n - 1, {l: m.l, c: m.r, r: m.c});
+         m.r.push(m.l.pop());
+         result.push($.extend(true, {}, model));
+         h(n - 1, {l: m.c, c: m.l, r: m.r});
+      }
+   })(n, model);
+   return result;
 };
