@@ -4,15 +4,15 @@
    <title>Towers of Hanoi</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="js/vendor/jquery-1.9.1.min.js"></script>
-   <script src="js/vendor/raphael-min.js"></script>
+   <script src="vendor/jquery-1.9.1.min.js"></script>
+   <script src="vendor/raphael-min.js"></script>
    <script src="js/hanoi.js"></script>
    <script src="js/hanoiview.js"></script>
 </head>
 
 <body>
    <script>
-      const n = 4;
+      const n = 5;
       const res = hanoi(n);
       const view = hanoiview(n);
       res.forEach((m, i) => setTimeout(() => view.drawModel(m), i * 1000))

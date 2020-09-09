@@ -1,8 +1,5 @@
-/* global Raphael */
-
 const hanoiview = (h) => { // h = number of bricks
-   const wBrick = 250;
-   const hBrick = 30;
+   const [wBrick, hBrick] = [250, 30];
    const hPole = hBrick * (h + 1);
    const papers = [null, null, null];
    Raphael(20, 20, 3 * (wBrick + 10), hPole + 80)
@@ -30,12 +27,7 @@ const hanoiview = (h) => { // h = number of bricks
       });
    }
 
-   const drawModel = (m) => {
-      //console.log(m.l + ' ' + m.c + ' ' + m.r);
-      drawTower(0, m.l);
-      drawTower(1, m.c);
-      drawTower(2, m.r);
-   }
+   const drawModel = m => (drawTower(0, m.l), drawTower(1, m.c), drawTower(2, m.r))
 
    return {
       drawModel

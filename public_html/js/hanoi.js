@@ -12,6 +12,5 @@ const hanoi = (n) => {
       }
    }
    h(n, model);
-   console.log( result)
    return result;
 };
