@@ -1,28 +1,28 @@
 /* global Raphael */
 
-var hanoiview = function (h) { // h = number of bricks
+const hanoiview = (h) => { // h = number of bricks
    const wBrick = 250;
    const hBrick = 30;
    const hPole = hBrick * (h + 1);
    const papers = [null, null, null];
    Raphael(20, 20, 3 * (wBrick + 10), hPole + 80)
-           .rect(0, 0, 3 * (wBrick + 10), hPole + 50)
-           .attr({fill: "#fff", stroke: "#000"});
+      .rect(0, 0, 3 * (wBrick + 10), hPole + 50)
+      .attr({ fill: "#fff", stroke: "#000" });
 
-   function drawPole(n) {
+   const drawPole = (n) => {
       paper = papers[n];
       paper.rect(wBrick / 2 - 5, 10, 10, hPole).attr("fill", "#000"); // pole
       paper.rect(0, hPole, wBrick, 30).attr("fill", "#000"); // bottom plate
 
    }
-   function drawTower(n, arr) {
+   const drawTower = (n, arr) => {
       if (papers[n] === null)
          papers[n] = Raphael(30 + n * (wBrick + 5), 30, (wBrick + 50), hPole + 60);
       paper = papers[n];
       paper.clear();
-      paper.rect(0, 0, wBrick, hPole + 30).attr({fill: "#eee", stroke: "#000"});
+      paper.rect(0, 0, wBrick, hPole + 30).attr({ fill: "#eee", stroke: "#000" });
       drawPole(n);
-      arr.forEach(function (v, i) { // draw Bricks
+      arr.forEach((v, i) => { // draw Bricks
          const w = v * wBrick / h;
          const l = (wBrick - w) / 2;
          const t = hPole - (i + 1) * hBrick;
@@ -30,7 +30,7 @@ var hanoiview = function (h) { // h = number of bricks
       });
    }
 
-   function drawModel(m) {
+   const drawModel = (m) => {
       //console.log(m.l + ' ' + m.c + ' ' + m.r);
       drawTower(0, m.l);
       drawTower(1, m.c);
@@ -38,6 +38,6 @@ var hanoiview = function (h) { // h = number of bricks
    }
 
    return {
-      drawModel: drawModel
+      drawModel
    };
 };
